@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Tissue</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f7f7f7; color: #222; }
+    header { background: #fff; box-shadow: 0 2px 8px #0001; padding: 0.5rem 0; text-align: center; }
+    .logo { height: 60px; margin: 10px 0; }
+    .hero { background: #e3f2fd; text-align: center; padding: 2rem 1rem 1rem; }
+    .hero img { max-width: 100%; border-radius: 10px; }
+    .section { background: #fff; margin: 1.5rem auto; max-width: 900px; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 2rem 1.5rem; }
+    h1, h2, h3 { color: #1976d2; }
+    .features { list-style: none; padding: 0; }
+    .features li { margin: 0.5rem 0; font-size: 1.1rem; }
+    .products { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+    .product { background: #fafafa; border-radius: 8px; box-shadow: 0 1px 4px #0001; padding: 1rem; width: 220px; text-align: center; }
+    .product img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
+    .product .price { color: #d32f2f; font-weight: bold; font-size: 1.2rem; }
+    .order-btn { background: #1976d2; color: #fff; border: none; border-radius: 5px; padding: 0.7rem 1.5rem; font-size: 1.1rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+    .order-btn:hover { background: #1565c0; }
+    .faq, .reviews { margin-top: 2rem; }
+    .faq-item { margin-bottom: 1.2rem; }
+    .faq-q { font-weight: bold; cursor: pointer; color: #1976d2; }
+    .faq-a { display: none; margin-top: 0.3rem; color: #333; }
+    .review { background: #f1f8e9; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    .review img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; float: left; margin-right: 1rem; }
+    .review .name { font-weight: bold; color: #388e3c; }
+    .review .stars { color: #ffb300; }
+    .review .text { margin-top: 0.5rem; }
+    .order-form { margin-top: 2rem; background: #e3f2fd; border-radius: 8px; padding: 1.5rem; }
+    .order-form label { display: block; margin: 0.7rem 0 0.2rem; }
+    .order-form input, .order-form textarea { width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #bbb; }
+    .order-form button { margin-top: 1rem; }
+    footer { background: #1976d2; color: #fff; text-align: center; padding: 1.2rem 0 0.5rem; margin-top: 2rem; }
+    @media (max-width: 700px) {
+      .section { padding: 1rem 0.5rem; }
+      .products { flex-direction: column; align-items: center; }
+      .product { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://magictissuebd.store/img/logo-2-r6h2ithsxr5qx16j0mnltamnu9pnw6felaf8gm7yf4.png" alt="Magic Tissue Logo" class="logo">
+    <div>HELP LINE: <b>09613821779</b></div>
+  </header>
+  <div class="hero">
+    <img src="https://magictissuebd.store/img/Magic-Tissue-Web-Cover.jpg" alt="Hero Banner">
+    <h1>Magic Tissue</h1>
+    <p>✔ ব্যবহারের ১৫-২০ মিনিট আগে ব্যবহার করতে হয়।<br>
+    ✔ লিঙ্গ শিথিল ও মরা কোষ সতেজ করে এবং বীর্য ঘন ও গাড় করে।<br>
+    ✔ ১০০ ভাগ গ্যারান্টি কাজ হবে ইনশাআল্লাহ। এটি ব্যবহারে কোনো পার্শ্ব-প্রতিক্রিয়া নেই।<br>
+    ✔ ডায়াবেটিস ও হার্টের রোগীরাও ব্যবহার করতে পারবেন।</p>
+    <button class="order-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">অর্ডার করতে এখানে ক্লিক করুন</button>
+  </div>
+  <div class="section">
+    <h2>পণ্য সিলেক্ট করুন</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 10 Pis">
+        <div>Magic Tissue 10 Pis Box Pack</div>
+        <div class="price">৳750 <span style="color:#388e3c;">Best Seller</span></div>
+        <button class="order-btn" onclick="selectProduct('Magic Tissue 10 Pis Box Pack',750)">অর্ডার করুন</button>
+      </div>
+      <div class="product">
+        <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 20 Pis">
+        <div>Magic Tissue 20 Pis Box Pack</div>
+        <div class="price">৳1250 <span style="color:#d32f2f;">Save Tk. 250</span></div>
+        <button class="order-btn" onclick="selectProduct('Magic Tissue 20 Pis Box Pack',1250)">অর্ডার করুন</button>
+      </div>
+      <div class="product">
+        <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 30 Pis">
+        <div>Magic Tissue 30 Pis (Buy 2 Get 1 Free) Box Pack</div>
+        <div class="price">৳1750 <span style="color:#388e3c;">Super Saver (Save Tk.500)</span></div>
+        <button class="order-btn" onclick="selectProduct('Magic Tissue 30 Pis (Buy 2 Get 1 Free) Box Pack',1750)">অর্ডার করুন</button>
+      </div>
+    </div>
+  </div>
+  <div class="section faq">
+    <h2>অনেকে যে প্রশ্নগুলো করে</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">কি ভাবে ব্যবহার করব?</div>
+      <div class="faq-a">প্রতিবার সহবাসে যাওয়ার ২-৩ মিনিট আগে লিঙ্গ ধুয়ে শুকনো কাপড় অথবা টিস্যু দিয়ে মুছে নিন, তারপর লিঙ্গের আগা থেকে অর্ধেক পর্যন্ত 2-3 বার মুছুন টিস্যু-টি দিয়ে এবং চারোপাশে ভালো করে একটা আঙ্গুল দিয়ে মালিশ করুন।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">কার্যকারিতা গুলো কী কী?</div>
+      <div class="faq-a">ম্যাজিক টিস্যু ব্যাবহারে ৩০-৪০ মিনিট গ্যারান্টি সহকারে স্ত্রী সহবাস করা যায়।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">যোগাযোগ করব কিভাবে?</div>
+      <div class="faq-a">সরাসরি কল করুন: 09613821779</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">সাইড-ইফেক্ট আছে?</div>
+      <div class="faq-a">কোনো সাইড ইফেক্ট নাই। এটা বাহ্যিক ব্যবহারের জন্য।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">এটা কি অরিজিনাল?</div>
+      <div class="faq-a">জি, ১০০% অরিজিনাল জার্মানির প্রডাক্ট।</div>
+    </div>
+  </div>
+  <div class="section reviews">
+    <h2>কাস্টমার রিভিউ</h2>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554447_d44e0597742f4563ece96c.jpg" alt="review1">
+      <div class="name">T*****m</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"অসাধারণ প্রোডাক্ট ব্যবহার করার পর রেজাল্ট খুব ভালো পেয়েছি। যারা মিলনের সময় বাড়াতে চান তাদের জন্য রিকমেন্ড করবো। আবার নিব শেষ হলে। ধন্যবাদ সেলারকে"</div>
+    </div>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554422_d3f9a6ca00.jpg" alt="review2">
+      <div class="name">S****m</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"বিশ্বাস করতে পারছিলাম না কিনতে ।ব্যবহার করার পর মিলনের সময় আগের থেকে বেশি অনুভব করলাম ।গন্ধ ও মনোরম ।ধন্যবাদ দারাজ এবং সেলার কে"</div>
+    </div>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554327_Screenshot%202025-12-24%20113154.png" alt="review3">
+      <div class="name">Shame</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"Ami jmn ta vaby silam tik tmn ta payasi. aktu 1st a jalapora kora toba amar partner kub anondo payasy "</div>
+    </div>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554161_sa8586003.jpg" alt="review4">
+      <div class="name">MD. Rabiul islam</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"ভালো ছিল। "</div>
+    </div>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554129_s596f6.jpg" alt="review5">
+      <div class="name">Charta eha</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"1 din use koraci . mota moti Valo cilo. Thanks"</div>
+    </div>
+    <div class="review">
+      <img src="https://magictissuebd.store/uploads/reviews/1766554091_tdb0a.jpg" alt="review6">
+      <div class="name">rahulreza0135</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">"ঠিকঠাক ভাবে পেয়েছি। কার্যকারিতা ভালো পাওয়া যায়। সবাই নিতে পারেন।"</div>
+    </div>
+  </div>
+  <div class="section order-form" id="order">
+    <h2>Billing details</h2>
+    <form onsubmit="submitOrder(event)">
+      <label>আপনার নাম *</label>
+      <input type="text" id="name" required>
+      <label>মোবাইল নাম্বার *</label>
+      <input type="text" id="phone" required>
+      <label>সম্পূর্ণ ঠিকানা *</label>
+      <input type="text" id="address" required>
+      <label>অর্ডার নোট (অপশনাল)</label>
+      <textarea id="note"></textarea>
+      <input type="hidden" id="product" value="Magic Tissue 10 Pis Box Pack">
+      <input type="hidden" id="price" value="750">
+      <button class="order-btn" type="submit">CONFIRM ORDER</button>
+    </form>
+    <div id="order-summary" style="display:none;margin-top:1.5rem;"></div>
+  </div>
+  <footer>
+    <div>© 2026 Magic Tissue Shop. All rights reserved.</div>
+    <div>প্রয়োজনে ফোন করুন <b>09613821779</b> এই নাম্বারে। সারাদেশে ক্যাশ অন ডেলিভারি করা হয়।</div>
+  </footer>
+  <script>
+    function toggleFaq(el) {
+      var a = el.nextElementSibling;
+      a.style.display = a.style.display === 'block' ? 'none' : 'block';
+    }
+    function selectProduct(name, price) {
+      document.getElementById('product').value = name;
+      document.getElementById('price').value = price;
+      window.scrollTo({top: document.getElementById('order').offsetTop, behavior: 'smooth'});
+    }
+    function submitOrder(e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var address = document.getElementById('address').value;
+      var note = document.getElementById('note').value;
+      var product = document.getElementById('product').value;
+      var price = document.getElementById('price').value;
+      var summary = `<h3>আপনার অর্ডার কনফার্ম হয়েছে!</h3><p><b>পণ্য:</b> ${product}<br><b>মূল্য:</b> ৳${price}<br><b>নাম:</b> ${name}<br><b>মোবাইল:</b> ${phone}<br><b>ঠিকানা:</b> ${address}<br><b>নোট:</b> ${note}</p><p>আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</p>`;
+      document.querySelector('.order-form form').style.display = 'none';
+      var os = document.getElementById('order-summary');
+      os.innerHTML = summary;
+      os.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
