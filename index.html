@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Magic Product</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Magic Tissue - 100% original German product for safe and effective results. Cash on delivery available nationwide.">
+  <meta name="keywords" content="Magic Tissue, ম্যাজিক টিস্যু, delay tissue, original, German, safe, cash on delivery, Bangladesh">
+  <meta name="author" content="Magic Tissue Shop">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Magic Tissue Shop - 100% Original German Product">
+  <meta property="og:description" content="Magic Tissue - Safe, effective, and trusted by thousands. Cash on delivery available nationwide.">
+  <meta property="og:image" content="https://magictissuebd.store/img/Magic-Tissue-Web-Cover.jpg">
+  <meta property="og:url" content="https://magictissuebd.store/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Magic Tissue Shop">
   <style>
     body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f7f7f7; color: #222; }
-    header { background: #fff; box-shadow: 0 2px 8px #0001; padding: 0.5rem 0; text-align: center; }
+    header { background: #fff; box-shadow: 0 2px 8px #0001; position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; max-width: 1100px; margin: auto; }
     .logo { height: 60px; margin: 10px 0; }
     .hero { background: #e3f2fd; text-align: center; padding: 2rem 1rem 1rem; }
     .hero img { max-width: 100%; border-radius: 10px; }
@@ -34,19 +47,45 @@
     .order-form input, .order-form textarea { width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #bbb; }
     .order-form button { margin-top: 1rem; }
     footer { background: #1976d2; color: #fff; text-align: center; padding: 1.2rem 0 0.5rem; margin-top: 2rem; }
+    /* Update CSS styles for responsive nav */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; max-width: 1100px; margin: auto; }
+    .nav-logo .logo { height: 60px; margin: 10px 0; }
+    .nav-links { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; }
+    .nav-links li { }
+    .nav-links a { text-decoration: none; color: #1976d2; font-weight: 500; font-size: 1.1rem; padding: 0.5rem 0.8rem; border-radius: 4px; transition: background 0.2s; }
+    .nav-links a:hover { background: #e3f2fd; }
+    .nav-help { color: #222; font-size: 1rem; margin-left: 1rem; }
+    .nav-toggle { display: none; background: none; border: none; font-size: 2rem; color: #1976d2; cursor: pointer; }
     @media (max-width: 700px) {
-      .section { padding: 1rem 0.5rem; }
-      .products { flex-direction: column; align-items: center; }
-      .product { width: 90%; }
+      .nav { flex-wrap: wrap; }
+      .nav-logo { width: 100%; text-align: center; }
+      .nav-links { display: none; flex-direction: column; width: 100%; background: #fff; position: absolute; top: 60px; left: 0; box-shadow: 0 2px 8px #0001; z-index: 10; }
+      .nav-links.show { display: flex; }
+      .nav-links li { text-align: center; }
+      .nav-toggle { display: block; }
+      .nav-help { width: 100%; text-align: center; margin: 0.5rem 0; }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://magictissuebd.store/img/logo-2-r6h2ithsxr5qx16j0mnltamnu9pnw6felaf8gm7yf4.png" alt="Magic Tissue Logo" class="logo">
-    <div>HELP LINE: <b>09613821779</b></div>
+    <nav class="nav">
+      <div class="nav-logo">
+        <img src="https://magictissuebd.store/img/logo-2-r6h2ithsxr5qx16j0mnltamnu9pnw6felaf8gm7yf4.png" alt="Magic Tissue Logo" class="logo">
+      </div>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#track-order">Order Tracking</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact-form">Contact</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+      <div class="nav-help">HELP LINE: <b>09613821779</b></div>
+    </nav>
   </header>
-  <div class="hero">
+  <div class="hero" id="hero">
     <img src="https://magictissuebd.store/img/Magic-Tissue-Web-Cover.jpg" alt="Hero Banner">
     <h1>Magic Tissue</h1>
     <p>✔ ব্যবহারের ১৫-২০ মিনিট আগে ব্যবহার করতে হয়।<br>
@@ -56,7 +95,7 @@
     <button class="order-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">অর্ডার করতে এখানে ক্লিক করুন</button>
   </div>
   <div class="section">
-    <h2>পণ্য সিলেক্ট করুন</h2>
+    <h2 id="products">পণ্য সিলেক্ট করুন</h2>
     <div class="products">
       <div class="product">
         <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 10 Pis">
@@ -126,7 +165,7 @@
       <div class="faq-a">জি, ১০০% অরিজিনাল জার্মানির প্রডাক্ট।</div>
     </div>
   </div>
-  <div class="section reviews">
+  <div class="section reviews" id="reviews">
     <h2>কাস্টমার রিভিউ</h2>
     <div class="review">
       <img src="https://magictissuebd.store/uploads/reviews/1766554447_d44e0597742f4563ece96c.jpg" alt="review1">
@@ -165,7 +204,33 @@
       <div class="text">"ঠিকঠাক ভাবে পেয়েছি। কার্যকারিতা ভালো পাওয়া যায়। সবাই নিতে পারেন।"</div>
     </div>
   </div>
+  <div class="section" id="contact-form" style="background:#e3f2fd;margin-top:2rem;">
+    <h2>Contact Us</h2>
+    <form onsubmit="sendContact(event)" style="max-width:400px;margin:auto;">
+      <label for="cname">আপনার নাম *</label>
+      <input type="text" id="cname" required>
+      <label for="cemail">ইমেইল (Email)</label>
+      <input type="email" id="cemail">
+      <label for="cmsg">মেসেজ *</label>
+      <textarea id="cmsg" required></textarea>
+      <div style="display:flex;gap:1rem;margin-top:1rem;justify-content:center;">
+        <button class="order-btn" type="submit">Send Email</button>
+        <button class="order-btn" type="button" style="background:#25d366;" onclick="sendWhatsApp()">Send via WhatsApp</button>
+      </div>
+    </form>
+    <div id="contact-result" style="display:none;margin-top:1rem;text-align:center;"></div>
+  </div>
+  </div>
   <div class="section order-form" id="order">
+      <div class="section" id="track-order" style="background:#fff;margin-bottom:2rem;">
+        <h2>Order Tracking</h2>
+        <form onsubmit="trackOrder(event)" style="max-width:400px;margin:auto;">
+          <label for="track-input">Order ID বা মোবাইল নাম্বার দিন:</label>
+          <input type="text" id="track-input" required placeholder="Order ID বা মোবাইল নাম্বার">
+          <button class="order-btn" type="submit">Track Order</button>
+        </form>
+        <div id="track-result" style="display:none;margin-top:1rem;"></div>
+      </div>
     <h2>Billing details</h2>
     <form onsubmit="submitOrder(event)">
       <label>আপনার নাম *</label>
@@ -183,9 +248,48 @@
     <div id="order-summary" style="display:none;margin-top:1.5rem;"></div>
   </div>
   <footer>
+    <div style="margin-bottom:1.5rem;">
+      <h3 style="color:#1976d2;">Follow & Share</h3>
+      <div style="display:flex;gap:1.2rem;justify-content:center;margin-bottom:0.7rem;">
+        <a href="https://www.facebook.com/profile.php?id=61586807528516" target="_blank" title="Facebook" style="text-decoration:none;">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;">
+        </a>
+        <a href="https://wa.me/8809613821779" target="_blank" title="WhatsApp" style="text-decoration:none;">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:32px;height:32px;">
+        </a>
+      </div>
+      <div style="display:flex;gap:1.2rem;justify-content:center;">
+        <button onclick="shareFB()" style="background:#1976d2;color:#fff;border:none;border-radius:5px;padding:0.5rem 1rem;cursor:pointer;">Share on Facebook</button>
+        <button onclick="shareWA()" style="background:#25d366;color:#fff;border:none;border-radius:5px;padding:0.5rem 1rem;cursor:pointer;">Share on WhatsApp</button>
+        <button onclick="shareMessenger()" style="background:#0084ff;color:#fff;border:none;border-radius:5px;padding:0.5rem 1rem;cursor:pointer;">Share on Messenger</button>
+      </div>
+    </div>
     <div>© 2026 Magic Tissue Shop. All rights reserved.</div>
     <div>প্রয়োজনে ফোন করুন <b>09613821779</b> এই নাম্বারে। সারাদেশে ক্যাশ অন ডেলিভারি করা হয়।</div>
   </footer>
+  <!-- Messenger Chat Plugin -->
+  <div id="fb-root"></div>
+  <div id="fb-customer-chat" class="fb-customer-chat"></div>
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "61586807528516");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v18.0'
+      });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <script>
     function toggleFaq(el) {
       var a = el.nextElementSibling;
@@ -195,6 +299,28 @@
       document.getElementById('product').value = name;
       document.getElementById('price').value = price;
       window.scrollTo({top: document.getElementById('order').offsetTop, behavior: 'smooth'});
+    }
+    function sendContact(e) {
+      e.preventDefault();
+      var name = document.getElementById('cname').value;
+      var email = document.getElementById('cemail').value;
+      var msg = document.getElementById('cmsg').value;
+      var result = document.getElementById('contact-result');
+      // Simulate email sending
+      if(name && msg) {
+        result.innerHTML = `<b>Thank you!</b> Your message has been sent. We will contact you soon.`;
+        result.style.display = 'block';
+      } else {
+        result.innerHTML = `<span style='color:#d32f2f;'>Please fill in all required fields.</span>`;
+        result.style.display = 'block';
+      }
+    }
+    function sendWhatsApp() {
+      var name = document.getElementById('cname').value;
+      var msg = document.getElementById('cmsg').value;
+      var phone = '8809613821779'; // Your WhatsApp number
+      var text = encodeURIComponent(`Name: ${name}\nMessage: ${msg}`);
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     }
     function submitOrder(e) {
       e.preventDefault();
@@ -209,6 +335,35 @@
       var os = document.getElementById('order-summary');
       os.innerHTML = summary;
       os.style.display = 'block';
+    }
+    function trackOrder(e) {
+      e.preventDefault();
+      var input = document.getElementById('track-input').value.trim();
+      var result = document.getElementById('track-result');
+      // Simulated tracking
+      if(input.length > 0) {
+        result.innerHTML = `<b>Order Status:</b> <span style='color:#388e3c;'>Processing</span><br>আপনার অর্ডার প্রসেসিং হচ্ছে। শীঘ্রই ডেলিভারি হবে।`;
+        result.style.display = 'block';
+      } else {
+        result.innerHTML = `<span style='color:#d32f2f;'>Order ID বা মোবাইল নাম্বার দিন!</span>`;
+        result.style.display = 'block';
+      }
+    }
+    function shareFB() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+    function shareWA() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://wa.me/?text=${url}`, '_blank');
+    }
+    function shareMessenger() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.facebook.com/dialog/send?link=${url}&app_id=123456789&redirect_uri=${url}`, '_blank');
+    }
+    function toggleNav() {
+      var navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
     }
   </script>
 </body>
