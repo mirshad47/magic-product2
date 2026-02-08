@@ -69,6 +69,11 @@
 </head>
 <body>
   <header>
+    <div style="display:flex;justify-content:flex-end;align-items:center;background:#f7f7f7;padding:0.3rem 1rem;">
+      <span style="margin-right:0.7rem;">Language:</span>
+      <button onclick="setLang('bn')" id="langBn" style="background:#1976d2;color:#fff;border:none;border-radius:4px;padding:0.3rem 0.8rem;margin-right:0.3rem;cursor:pointer;">বাংলা</button>
+      <button onclick="setLang('en')" id="langEn" style="background:#1976d2;color:#fff;border:none;border-radius:4px;padding:0.3rem 0.8rem;cursor:pointer;">English</button>
+    </div>
     <nav class="nav">
       <div class="nav-logo">
         <img src="https://magictissuebd.store/img/logo-2-r6h2ithsxr5qx16j0mnltamnu9pnw6felaf8gm7yf4.png" alt="Magic Tissue Logo" class="logo">
@@ -271,6 +276,70 @@
   <div id="fb-root"></div>
   <div id="fb-customer-chat" class="fb-customer-chat"></div>
   <script>
+        // Multi-language support
+        const langData = {
+          bn: {
+            home: 'হোম',
+            products: 'পণ্য',
+            orderTracking: 'অর্ডার ট্র্যাকিং',
+            reviews: 'রিভিউ',
+            contact: 'যোগাযোগ',
+            order: 'অর্ডার',
+            help: 'হেল্প লাইন: 09613821779',
+            selectProduct: 'পণ্য সিলেক্ট করুন',
+            orderBtn: 'অর্ডার করুন',
+            confirmOrder: 'CONFIRM ORDER',
+            billingDetails: 'Billing details',
+            trackOrder: 'Order Tracking',
+            contactUs: 'Contact Us',
+            sendEmail: 'Send Email',
+            sendWhatsApp: 'Send via WhatsApp',
+          },
+          en: {
+            home: 'Home',
+            products: 'Products',
+            orderTracking: 'Order Tracking',
+            reviews: 'Reviews',
+            contact: 'Contact',
+            order: 'Order',
+            help: 'HELP LINE: 09613821779',
+            selectProduct: 'Select Product',
+            orderBtn: 'Order Now',
+            confirmOrder: 'CONFIRM ORDER',
+            billingDetails: 'Billing details',
+            trackOrder: 'Order Tracking',
+            contactUs: 'Contact Us',
+            sendEmail: 'Send Email',
+            sendWhatsApp: 'Send via WhatsApp',
+          }
+        };
+        let currentLang = 'bn';
+        function setLang(lang) {
+          currentLang = lang;
+          document.getElementById('langBn').style.background = lang === 'bn' ? '#388e3c' : '#1976d2';
+          document.getElementById('langEn').style.background = lang === 'en' ? '#388e3c' : '#1976d2';
+          // Update nav links
+          const navLinks = document.querySelectorAll('.nav-links a');
+          navLinks[0].textContent = langData[lang].home;
+          navLinks[1].textContent = langData[lang].products;
+          navLinks[2].textContent = langData[lang].orderTracking;
+          navLinks[3].textContent = langData[lang].reviews;
+          navLinks[4].textContent = langData[lang].contact;
+          navLinks[5].textContent = langData[lang].order;
+          document.querySelector('.nav-help').textContent = langData[lang].help;
+          // Update section titles
+          document.getElementById('products').textContent = langData[lang].selectProduct;
+          document.getElementById('order-btn-1').textContent = langData[lang].orderBtn;
+          document.getElementById('order-btn-2').textContent = langData[lang].orderBtn;
+          document.getElementById('order-btn-3').textContent = langData[lang].orderBtn;
+          document.getElementById('confirm-order-btn').textContent = langData[lang].confirmOrder;
+          document.getElementById('billing-details-title').textContent = langData[lang].billingDetails;
+          document.getElementById('track-order-title').textContent = langData[lang].trackOrder;
+          document.getElementById('contact-title').textContent = langData[lang].contactUs;
+          document.getElementById('send-email-btn').textContent = langData[lang].sendEmail;
+          document.getElementById('send-wa-btn').textContent = langData[lang].sendWhatsApp;
+        }
+        window.onload = function() { setLang('bn'); };
     var chatbox = document.getElementById('fb-customer-chat');
     chatbox.setAttribute("page_id", "61586807528516");
     chatbox.setAttribute("attribution", "biz_inbox");
