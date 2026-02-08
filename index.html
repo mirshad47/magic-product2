@@ -56,14 +56,33 @@
     .nav-links a:hover { background: #e3f2fd; }
     .nav-help { color: #222; font-size: 1rem; margin-left: 1rem; }
     .nav-toggle { display: none; background: none; border: none; font-size: 2rem; color: #1976d2; cursor: pointer; }
+    @media (max-width: 900px) {
+      .section { max-width: 98vw; }
+      .nav { max-width: 100vw; }
+    }
     @media (max-width: 700px) {
-      .nav { flex-wrap: wrap; }
+      .section { padding: 1rem 0.5rem; max-width: 100vw; }
+      .products { flex-direction: column; align-items: center; gap: 1rem; }
+      .product { width: 98vw; max-width: 350px; margin: 0 auto; }
+      .product img { width: 90vw; max-width: 200px; height: auto; }
+      .nav { flex-wrap: wrap; max-width: 100vw; }
       .nav-logo { width: 100%; text-align: center; }
       .nav-links { display: none; flex-direction: column; width: 100%; background: #fff; position: absolute; top: 60px; left: 0; box-shadow: 0 2px 8px #0001; z-index: 10; }
       .nav-links.show { display: flex; }
       .nav-links li { text-align: center; }
       .nav-toggle { display: block; }
       .nav-help { width: 100%; text-align: center; margin: 0.5rem 0; }
+      .hero { padding: 1rem 0.2rem; }
+      .hero img { max-width: 98vw; height: auto; }
+      .faq, .reviews, .order-form, .gallery, .contact-form { padding: 1rem 0.2rem; }
+      .review img { width: 40px; height: 40px; margin-right: 0.5rem; }
+      /* Responsive gallery styles */
+      .gallery { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+      @media (max-width: 700px) {
+        .gallery { flex-direction: column !important; align-items: center !important; gap: 1rem !important; }
+        .gallery > div { width: 98vw !important; max-width: 350px !important; margin: 0 auto !important; }
+        .gallery img { width: 90vw !important; max-width: 200px !important; height: auto !important; }
+      }
     }
   </style>
 </head>
@@ -79,6 +98,7 @@
         <img src="https://magictissuebd.store/img/logo-2-r6h2ithsxr5qx16j0mnltamnu9pnw6felaf8gm7yf4.png" alt="Magic Tissue Logo" class="logo">
       </div>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      <button class="nav-close" onclick="toggleNav()" style="display:none;position:absolute;top:10px;right:10px;font-size:2rem;background:none;border:none;color:#1976d2;">✖</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#hero">Home</a></li>
         <li><a href="#products">Products</a></li>
@@ -106,19 +126,19 @@
         <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 10 Pis">
         <div>Magic Tissue 10 Pis Box Pack</div>
         <div class="price">৳750 <span style="color:#388e3c;">Best Seller</span></div>
-        <button class="order-btn" onclick="selectProduct('Magic Tissue 10 Pis Box Pack',750)">অর্ডার করুন</button>
+        <button class="order-btn" id="order-btn-1" onclick="selectProduct('Magic Tissue 10 Pis Box Pack',750)">অর্ডার করুন</button>
       </div>
       <div class="product">
         <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 20 Pis">
         <div>Magic Tissue 20 Pis Box Pack</div>
         <div class="price">৳1250 <span style="color:#d32f2f;">Save Tk. 250</span></div>
-        <button class="order-btn" onclick="selectProduct('Magic Tissue 20 Pis Box Pack',1250)">অর্ডার করুন</button>
+        <button class="order-btn" id="order-btn-2" onclick="selectProduct('Magic Tissue 20 Pis Box Pack',1250)">অর্ডার করুন</button>
       </div>
       <div class="product">
         <img src="https://magictissuebd.store/img/Magic-Tissue-Bag-Packet-Mockup-300x300.jpg" alt="Magic Tissue 30 Pis">
         <div>Magic Tissue 30 Pis (Buy 2 Get 1 Free) Box Pack</div>
         <div class="price">৳1750 <span style="color:#388e3c;">Super Saver (Save Tk.500)</span></div>
-        <button class="order-btn" onclick="selectProduct('Magic Tissue 30 Pis (Buy 2 Get 1 Free) Box Pack',1750)">অর্ডার করুন</button>
+        <button class="order-btn" id="order-btn-3" onclick="selectProduct('Magic Tissue 30 Pis (Buy 2 Get 1 Free) Box Pack',1750)">অর্ডার করুন</button>
       </div>
     </div>
     <div class="section" style="margin-top:2rem;background:#f9f9f9;">
@@ -219,8 +239,8 @@
       <label for="cmsg">মেসেজ *</label>
       <textarea id="cmsg" required></textarea>
       <div style="display:flex;gap:1rem;margin-top:1rem;justify-content:center;">
-        <button class="order-btn" type="submit">Send Email</button>
-        <button class="order-btn" type="button" style="background:#25d366;" onclick="sendWhatsApp()">Send via WhatsApp</button>
+        <button class="order-btn" id="send-email-btn" type="submit">Send Email</button>
+        <button class="order-btn" id="send-wa-btn" type="button" style="background:#25d366;" onclick="sendWhatsApp()">Send via WhatsApp</button>
       </div>
     </form>
     <div id="contact-result" style="display:none;margin-top:1rem;text-align:center;"></div>
@@ -236,7 +256,7 @@
         </form>
         <div id="track-result" style="display:none;margin-top:1rem;"></div>
       </div>
-    <h2>Billing details</h2>
+    <h2 id="billing-details-title">Billing details</h2>
     <form onsubmit="submitOrder(event)">
       <label>আপনার নাম *</label>
       <input type="text" id="name" required>
@@ -248,7 +268,7 @@
       <textarea id="note"></textarea>
       <input type="hidden" id="product" value="Magic Tissue 10 Pis Box Pack">
       <input type="hidden" id="price" value="750">
-      <button class="order-btn" type="submit">CONFIRM ORDER</button>
+      <button class="order-btn" id="confirm-order-btn" type="submit">CONFIRM ORDER</button>
     </form>
     <div id="order-summary" style="display:none;margin-top:1.5rem;"></div>
   </div>
@@ -369,20 +389,30 @@
       document.getElementById('price').value = price;
       window.scrollTo({top: document.getElementById('order').offsetTop, behavior: 'smooth'});
     }
+    /* Show loading spinner for actions */
+    function showActionLoader() {
+      document.getElementById('action-loader').style.display = 'flex';
+    }
+    function hideActionLoader() {
+      document.getElementById('action-loader').style.display = 'none';
+    }
     function sendContact(e) {
       e.preventDefault();
-      var name = document.getElementById('cname').value;
-      var email = document.getElementById('cemail').value;
-      var msg = document.getElementById('cmsg').value;
-      var result = document.getElementById('contact-result');
-      // Simulate email sending
-      if(name && msg) {
-        result.innerHTML = `<b>Thank you!</b> Your message has been sent. We will contact you soon.`;
-        result.style.display = 'block';
-      } else {
-        result.innerHTML = `<span style='color:#d32f2f;'>Please fill in all required fields.</span>`;
-        result.style.display = 'block';
-      }
+      showActionLoader();
+      setTimeout(function() {
+        hideActionLoader();
+        var name = document.getElementById('cname').value;
+        var email = document.getElementById('cemail').value;
+        var msg = document.getElementById('cmsg').value;
+        var result = document.getElementById('contact-result');
+        if(name && msg) {
+          result.innerHTML = `<b>Thank you!</b> Your message has been sent. We will contact you soon.`;
+          result.style.display = 'block';
+        } else {
+          result.innerHTML = `<span style='color:#d32f2f;'>Please fill in all required fields.</span>`;
+          result.style.display = 'block';
+        }
+      }, 800);
     }
     function sendWhatsApp() {
       var name = document.getElementById('cname').value;
@@ -393,17 +423,21 @@
     }
     function submitOrder(e) {
       e.preventDefault();
-      var name = document.getElementById('name').value;
-      var phone = document.getElementById('phone').value;
-      var address = document.getElementById('address').value;
-      var note = document.getElementById('note').value;
-      var product = document.getElementById('product').value;
-      var price = document.getElementById('price').value;
-      var summary = `<h3>আপনার অর্ডার কনফার্ম হয়েছে!</h3><p><b>পণ্য:</b> ${product}<br><b>মূল্য:</b> ৳${price}<br><b>নাম:</b> ${name}<br><b>মোবাইল:</b> ${phone}<br><b>ঠিকানা:</b> ${address}<br><b>নোট:</b> ${note}</p><p>আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</p>`;
-      document.querySelector('.order-form form').style.display = 'none';
-      var os = document.getElementById('order-summary');
-      os.innerHTML = summary;
-      os.style.display = 'block';
+      showActionLoader();
+      setTimeout(function() {
+        hideActionLoader();
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var address = document.getElementById('address').value;
+        var note = document.getElementById('note').value;
+        var product = document.getElementById('product').value;
+        var price = document.getElementById('price').value;
+        var summary = `<h3>আপনার অর্ডার কনফার্ম হয়েছে!</h3><p><b>পণ্য:</b> ${product}<br><b>মূল্য:</b> ৳${price}<br><b>নাম:</b> ${name}<br><b>মোবাইল:</b> ${phone}<br><b>ঠিকানা:</b> ${address}<br><b>নোট:</b> ${note}</p><p>আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</p>`;
+        document.querySelector('.order-form form').style.display = 'none';
+        var os = document.getElementById('order-summary');
+        os.innerHTML = summary;
+        os.style.display = 'block';
+      }, 800);
     }
     function trackOrder(e) {
       e.preventDefault();
@@ -430,10 +464,27 @@
       const url = encodeURIComponent(window.location.href);
       window.open(`https://www.facebook.com/dialog/send?link=${url}&app_id=123456789&redirect_uri=${url}`, '_blank');
     }
+    /* Update toggleNav function for close button */
     function toggleNav() {
       var navLinks = document.getElementById('navLinks');
       navLinks.classList.toggle('show');
+      var closeBtn = document.querySelector('.nav-close');
+      if(navLinks.classList.contains('show')) {
+        closeBtn.style.display = 'block';
+      } else {
+        closeBtn.style.display = 'none';
+      }
     }
   </script>
+  <!-- Usability: loading spinner for actions -->
+  <div id="action-loader" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#fff;align-items:center;justify-content:center;z-index:9999;">
+    <div style="border:8px solid #e3f2fd;border-top:8px solid #1976d2;border-radius:50%;width:60px;height:60px;animation:spin 1s linear infinite;"></div>
+  </div>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </body>
 </html>
